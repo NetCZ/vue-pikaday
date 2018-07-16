@@ -4,7 +4,6 @@ import camelCase from 'lodash/camelCase';
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import progress from 'rollup-plugin-progress';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-porter';
 
@@ -19,7 +18,6 @@ export default {
   input: path.resolve(src, 'index.js'),
   external: Object.keys(peerDependencies),
   plugins: [
-    progress(),
     resolve({ external: ['vue'] }),
     commonjs(),
     css({ dest: dist + '/vue-pikaday.css' }),

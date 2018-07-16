@@ -3,7 +3,6 @@ import camelCase from 'lodash/camelCase';
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import progress from 'rollup-plugin-progress';
 import { terser } from 'rollup-plugin-terser';
 import { name } from '../package.json';
 
@@ -11,7 +10,6 @@ const debug = process.env.DEBUG === 'true';
 
 export default {
   plugins: [
-    progress(),
     resolve({ external: ['vue'] }),
     commonjs({
       include: 'node_modules/**'
