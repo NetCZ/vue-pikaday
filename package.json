@@ -1,0 +1,81 @@
+{
+  "name": "vue-pikaday",
+  "scope": "enrian",
+  "version": "0.0.0-development",
+  "description": "VueJS wrapper component for Pikaday datepicker",
+  "main": "dist/vue-pikaday.common.js",
+  "browser": "dist/vue-pikaday.umd.js",
+  "module": "dist/vue-pikaday.esm.js",
+  "style": "dist/vue-pikaday.css",
+  "author": "Michal Szajter <michal@szajter.cz>",
+  "license": "MIT",
+  "homepage": "https://github.com/enrian/vue-pikaday",
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com/enrian/vue-pikaday.git"
+  },
+  "bugs": {
+    "url": "https://github.com/enrian/vue-pikaday/issues"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e",
+      "pre-push": "yarn test"
+    }
+  },
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "pretest": "yarn lint && yarn build",
+    "test": "yarn cy:run",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "lint": "eslint src config",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "pikaday",
+    "datepicker"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.10"
+  },
+  "peerDependencies": {
+    "moment": "^2.22.2",
+    "pikaday": "^1.7.0",
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@commitlint/travis-cli": "^7.0.0",
+    "@cypress/rollup-preprocessor": "https://github.com/dschulten/cypress-rollup-preprocessor",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "cypress": "^3.0.2",
+    "cypress-vue-unit-test": "^1.11.0",
+    "eslint": "^4.19.1",
+    "husky": "^1.0.0-rc.13",
+    "moment": "^2.22.2",
+    "pikaday": "^1.7.0",
+    "rollup": "^0.60.0",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-css-porter": "^0.1.2",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-progress": "^0.4.0",
+    "rollup-plugin-terser": "^1.0.1",
+    "rollup-plugin-uglify": "^4.0.0",
+    "semantic-release": "^15.7.1",
+    "travis-deploy-once": "^5.0.1",
+    "vue": "^2.5.16",
+    "vue-template-compiler": "^2.5.16"
+  }
+}

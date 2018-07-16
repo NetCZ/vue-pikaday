@@ -1,0 +1,6 @@
+.idea
+node_modules
+.coverage
+.envrc
+*.log
+cypress/screenshots
