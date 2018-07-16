@@ -7,8 +7,9 @@ import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-porter';
 
-import { peerDependencies, name } from './package.json';
+import { peerDependencies, scope, name as nameWithScope } from './package.json';
 
+const name = nameWithScope.replace(`@${scope}/`, '');
 const base = path.resolve(__dirname, './');
 const src = path.resolve(base, 'src');
 const dist = path.resolve(base, 'dist');

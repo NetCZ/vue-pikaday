@@ -1,5 +1,5 @@
 {
-  "name": "vue-pikaday",
+  "name": "@enrian/vue-pikaday",
   "scope": "enrian",
   "version": "0.0.0-development",
   "description": "VueJS wrapper component for Pikaday datepicker",
