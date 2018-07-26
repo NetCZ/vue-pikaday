@@ -28,4 +28,4 @@ Feel free to create issue for bugs or pull request with fixes / enhancements.
 
 [MIT](https://opensource.org/licenses/MIT)
 
-Copyright (c) 2018 - present Enrian Partners a.s.
+Copyright (c) 2018 - present <a href="https://www.enrian.com"><img src="https://www.enrian.com/www/img/logo.svg" alt="Enrian Partners a.s." height="40" /></a>
