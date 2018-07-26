@@ -25,7 +25,7 @@ const options = {
 describe.only('Component', () => {
   before(() => cy.mount(component, options));
 
-  it('have custom display format', () => {
+  it('shows / hide via external trigger', () => {
     cy.get('[data-test="manual"]').click();
     cy.get('.pika-single').should('be.visible');
 
