@@ -4,7 +4,7 @@
   "version": "0.0.0-development",
   "description": "VueJS wrapper component for Pikaday datepicker",
   "main": "dist/vue-pikaday.common.js",
-  "browser": "dist/vue-pikaday.min.js",
+  "browser": "dist/vue-pikaday.js",
   "module": "dist/vue-pikaday.esm.js",
   "style": "dist/vue-pikaday.css",
   "author": "Michal Szajter <michal@szajter.cz>",
