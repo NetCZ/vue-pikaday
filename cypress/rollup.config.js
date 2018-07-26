@@ -13,16 +13,17 @@ const debug = process.env.DEBUG === 'true';
 export default {
   plugins: [
     resolve({ external: ['vue'] }),
-    commonjs({
-      include: 'node_modules/**'
-    }),
     babel({
       babelrc: false,
       presets: [
-        ['env', { 'modules': false }]
+        ['env', { 'modules': false }],
+        'flow'
       ],
       exclude: 'node_modules/**',
       plugins: ['external-helpers']
+    }),
+    commonjs({
+      include: 'node_modules/**'
     }),
     terser({
       compress: {

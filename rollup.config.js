@@ -20,16 +20,17 @@ export default {
   external: Object.keys(peerDependencies),
   plugins: [
     resolve({ external: ['vue'] }),
-    commonjs(),
-    css({ dest: dist + '/vue-pikaday.css' }),
     babel({
       babelrc: false,
       presets: [
-        ['env', { 'modules': false }]
+        ['env', { 'modules': false }],
+        'flow'
       ],
       exclude: 'node_modules/**',
       plugins: ['external-helpers']
     }),
+    commonjs(),
+    css({ dest: dist + '/vue-pikaday.css' }),
     terser({
       compress: {
         drop_console: !debug,

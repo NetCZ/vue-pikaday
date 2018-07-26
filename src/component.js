@@ -1,3 +1,5 @@
+//@flow
+
 import moment from 'moment';
 import Pikaday from 'pikaday';
 import isDate from 'lodash/isDate';
@@ -9,15 +11,15 @@ export default {
   inheritAttrs: false,
   props: {
     value: {
-      validator(value) {
-        const allowedTypes = [undefined, null];
+      validator(value: typeof undefined | null | Date): boolean {
+        const allowedTypes: Array<typeof undefined | null> = [undefined, null];
 
         if (isDate(value)) {
           return true;
         }
 
         for (const type of allowedTypes) {
-          const allowed = value === type || typeof value === type;
+          const allowed: boolean = value === type || typeof value === type;
 
           if (allowed) {
             return true;
@@ -53,11 +55,11 @@ export default {
     };
   },
   computed: {
-    elementAttributes() {
+    elementAttributes(): Object {
       return Object.assign({}, this.$attrs, this.elAttrs);
     }
   },
-  render(h) {
+  render(h: Function): Object {
     return h('input', {
       attrs: this.elementAttributes,
       on: this.$listeners,
@@ -83,7 +85,7 @@ export default {
 
       this.pikaday = new Pikaday(this.mergedOptions);
 
-      let defaultValue = this.value;
+      let defaultValue: typeof undefined | null | Date = this.value;
 
       if (!this.value && this.autoDefault) {
         defaultValue = moment().toDate();
@@ -101,12 +103,12 @@ export default {
     destroy() {
       this.pikaday.destroy();
     },
-    change(value) {
+    change(value: typeof undefined | null | Date) {
       this.$emit('input', value);
       this.$emit('input-value', this.inputValue(value));
     },
-    inputValue(value) {
-      const inputValue = moment(value);
+    inputValue(value: typeof undefined | null | Date): string | null {
+      const inputValue: moment = moment(value);
       return inputValue.isValid() ? inputValue.format(this.mergedOptions.format) : null;
     },
     onSelect() {
@@ -124,9 +126,9 @@ export default {
     hide() {
       this.pikaday.hide();
     },
-    bindListener(listener, cb) {
+    bindListener(listener: Function, cb: Function) {
       if (this.mergedOptions[listener]) {
-        const old = this.mergedOptions[listener];
+        const old: Function = this.mergedOptions[listener];
         this.mergedOptions[listener] = (...args) => {
           old(args);
           cb.apply(this);

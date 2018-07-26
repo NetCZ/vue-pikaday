@@ -1,5 +1,6 @@
 {
   "video": false,
+  "screenshotsFolder": false,
   "fixturesFolder": false,
   "integrationFolder": "test/specs"
 }
