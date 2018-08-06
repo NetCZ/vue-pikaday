@@ -32,6 +32,9 @@ export default {
     commonjs(),
     css({ dest: dist + '/vue-pikaday.css' }),
     terser({
+      mangle: {
+        reserved: ['Pikaday', 'moment']
+      },
       compress: {
         drop_console: !debug,
         drop_debugger: !debug
@@ -46,7 +49,7 @@ export default {
       sourcemap: true,
       globals: {
         moment: 'moment',
-        pikaday: 'pikaday'
+        pikaday: 'Pikaday'
       },
     },
     {
@@ -56,7 +59,7 @@ export default {
       sourcemap: true,
       globals: {
         moment: 'moment',
-        pikaday: 'pikaday'
+        pikaday: 'Pikaday'
       },
     },
     {

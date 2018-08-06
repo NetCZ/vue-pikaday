@@ -1,7 +1,7 @@
 import VuePikaday from './component';
 import { VuePikadayVisible } from './directives';
 
-const Pikaday = {
+const VuePikadayPlugin = {
   install(Vue) {
     Vue.component(VuePikaday.name, VuePikaday);
     Vue.directive('p-visible', VuePikadayVisible);
@@ -9,7 +9,7 @@ const Pikaday = {
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(Pikaday);
+  window.Vue.use(VuePikadayPlugin);
 }
 
-export default Pikaday;
+export default VuePikadayPlugin;
