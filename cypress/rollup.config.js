@@ -4,6 +4,8 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
+import html from 'rollup-plugin-html';
+
 import { scope, name as nameWithScope } from '../package.json';
 
 const name = nameWithScope.replace(`@${scope}/`, '');
@@ -13,6 +15,9 @@ const debug = process.env.DEBUG === 'true';
 export default {
   plugins: [
     resolve({ external: ['vue'] }),
+    html({
+      include: '**/*.html'
+    }),
     babel({
       babelrc: false,
       presets: [

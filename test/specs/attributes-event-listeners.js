@@ -1,5 +1,3 @@
-import VuePikaday from '../../dist/vue-pikaday.esm';
-
 const component = {
   template: `<vue-pikaday 
       v-model="date" 
@@ -19,15 +17,8 @@ const component = {
   }
 };
 
-const options = {
-  extensions: {
-    plugins: [VuePikaday]
-  },
-  html: '<div id="app"></div><link rel="stylesheet" href="../../dist/vue-pikaday.min.css" />'
-};
-
 describe.only('Component', () => {
-  before(() => cy.mount(component, options));
+  before(() => cy.mount(component));
 
   it('renders custom attributes', () => {
     cy.get('[data-vue-pikaday]').should('have.attr', 'placeholder', 'Pick a date');
@@ -40,11 +31,11 @@ describe.only('Component', () => {
     Cypress.vue.$on('focused', focusSpy);
     Cypress.vue.$on('blurred', blurSpy);
 
-    cy.get('[data-vue-pikaday]').focus().then(() => {
+    cy.get('[data-vue-pikaday]').as('picker').click().then(() => {
       expect(focusSpy).to.be.calledOnce;
     });
 
-    cy.get('[data-vue-pikaday]').blur().then(() => {
+    cy.get('@picker').blur().then(() => {
       expect(blurSpy).to.be.calledOnce;
     });
   });

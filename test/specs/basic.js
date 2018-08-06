@@ -1,30 +1,21 @@
 import moment from 'moment';
 
-import VuePikaday from '../../dist/vue-pikaday.esm';
-
 const component = {
   template: '<vue-pikaday v-model="date" :options="options" data-vue-pikaday></vue-pikaday>'
 };
 
-const options = {
-  extensions: {
-    plugins: [VuePikaday]
-  },
-  html: '<div id="app"></div><link rel="stylesheet" href="../../dist/vue-pikaday.min.css" />'
-};
-
 describe('Component', () => {
-  before(() => cy.mount(component, options));
+  before(() => cy.mount(component));
 
   it('renders', () => {
-    cy.get('[data-vue-pikaday]');
+    cy.get('[data-vue-pikaday]').should('be.visible');
     cy.get('.pika-single').should('not.be.visible');
   });
 
   it('focuses / blurs picker', () => {
-    cy.get('[data-vue-pikaday]').focus();
+    cy.get('[data-vue-pikaday]').as('picker').focus();
     cy.get('.pika-single').should('be.visible');
-    cy.get('[data-vue-pikaday]').blur();
+    cy.get('@picker').blur();
     cy.get('.pika-single').should('not.be.visible');
   });
 

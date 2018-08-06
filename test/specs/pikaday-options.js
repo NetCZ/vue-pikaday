@@ -1,6 +1,7 @@
 import moment from 'moment';
 
-import VuePikaday from '../../dist/vue-pikaday.esm';
+const allowedDateStart = moment().date(5);
+const allowedDateEnd = moment(allowedDateStart).add(7, 'days');
 
 const component = {
   template: `<vue-pikaday 
@@ -12,47 +13,47 @@ const component = {
   data: {
     options: {
       format: 'YYYY/MM/DD',
-      minDate: moment().toDate(),
-      maxDate: moment().add(7, 'days').toDate()
+      minDate: allowedDateStart.toDate(),
+      maxDate: allowedDateEnd.toDate()
     }
   }
 };
 
-const options = {
-  extensions: {
-    plugins: [VuePikaday]
-  },
-  html: '<div id="app"></div><link rel="stylesheet" href="../../dist/vue-pikaday.min.css" />'
-};
-
 describe.only('Component', () => {
-  before(() => cy.mount(component, options));
+  before(() => cy.mount(component));
 
   it('have current date filled by default', () => {
-    cy.get('[data-vue-pikaday]').should('have.value', moment().format('YYYY/MM/DD'));
+    let testDate = moment();
+
+    if (testDate >= allowedDateEnd) {
+      testDate = allowedDateEnd;
+    }
+
+    if (testDate <= allowedDateStart) {
+      testDate = allowedDateStart;
+    }
+
+    cy.get('[data-vue-pikaday]').should('have.value', testDate.format('YYYY/MM/DD'));
   });
 
   it('have custom display format', () => {
-    const date = moment().add(1, 'day');
-
-    cy.get('[data-vue-pikaday]').focus();
-    cy.get(`[data-day="${date.date()}"] button`).click();
-    cy.get('[data-vue-pikaday]').should('have.value', date.format('YYYY/MM/DD'));
+    cy.get('[data-vue-pikaday]').as('picker').click();
+    cy.get(`[data-day="${allowedDateStart.date()}"] button`).click();
+    cy.get('@picker').should('have.value', allowedDateStart.format('YYYY/MM/DD'));
   });
 
   it('restricts dates selection to current week', () => {
-    cy.get('[data-vue-pikaday]').focus();
-    cy.get(`[data-day="${moment().subtract(1, 'day').date()}"]`).should('have.class', 'is-disabled');
+    cy.get('[data-vue-pikaday]').as('picker').click();
+    cy.get(`[data-day="${moment(allowedDateStart).subtract(1, 'day').date()}"]`).should('have.class', 'is-disabled');
 
-    cy.get('[data-vue-pikaday]').focus();
-    cy.get(`[data-day="${moment().add(8, 'days').date()}"]`).should('have.class', 'is-disabled');
+    cy.get('@picker').click();
+    cy.get(`[data-day="${moment(allowedDateStart).add(8, 'days').date()}"]`).should('have.class', 'is-disabled');
 
-    const plus5Days = moment().add(5, 'days');
+    const plus5Days = moment(allowedDateStart).add(5, 'days');
 
-    cy.get('[data-vue-pikaday]').focus();
+    cy.get('@picker').click();
     cy.get(`[data-day="${plus5Days.date()}"]`).should('not.have.class', 'is-disabled');
-
     cy.get(`[data-day="${plus5Days.date()}"] button`).click();
-    cy.get('[data-vue-pikaday]').should('have.value', plus5Days.format('YYYY/MM/DD'));
+    cy.get('@picker').should('have.value', plus5Days.format('YYYY/MM/DD'));
   });
 });
