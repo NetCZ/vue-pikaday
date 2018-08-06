@@ -1,5 +1,5 @@
 {
-  "video": false,
   "fixturesFolder": false,
-  "integrationFolder": "test/specs"
+  "integrationFolder": "test/specs",
+  "projectId": "54yarn"
 }

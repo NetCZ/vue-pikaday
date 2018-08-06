@@ -29,7 +29,7 @@
     "test:esm": "yarn cy:run --env mode=esm",
     "test:standalone": "yarn cy:run --env mode=standalone",
     "test": "yarn test:esm && yarn test:standalone",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --record",
     "cy:open": "cypress open",
     "lint": "eslint src config",
     "travis-deploy-once": "travis-deploy-once",

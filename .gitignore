@@ -4,3 +4,4 @@ node_modules
 .envrc
 *.log
 cypress/screenshots
+cypress/videos
