@@ -31,7 +31,7 @@
     "test": "yarn test:esm && yarn test:standalone",
     "cy:run": "cypress run --record",
     "cy:open": "cypress open",
-    "lint": "eslint src config",
+    "lint": "eslint src",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
