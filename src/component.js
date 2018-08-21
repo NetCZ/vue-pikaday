@@ -71,6 +71,11 @@ export default {
   },
   mounted() {
     this.create();
+
+    this.$watch('value', (value: typeof undefined | null | Date) => {
+      this.pikaday.setDate(value, true);
+      this.$emit('input-value', this.inputValue(value));
+    });
   },
   beforeDestroy() {
     this.destroy();
