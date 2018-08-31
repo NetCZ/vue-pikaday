@@ -19,13 +19,11 @@ export default {
       include: '**/*.html'
     }),
     babel({
-      babelrc: false,
       presets: [
-        ['env', { 'modules': false }],
-        'flow'
+        ['@babel/preset-env', { 'modules': false }],
+        '@babel/preset-flow'
       ],
-      exclude: 'node_modules/**',
-      plugins: ['external-helpers']
+      exclude: 'node_modules/**'
     }),
     commonjs({
       include: 'node_modules/**'

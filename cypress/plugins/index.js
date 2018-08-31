@@ -11,8 +11,7 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-require('babel-register')({
-  presets: ['env'],
-  plugins: ['transform-es2015-modules-commonjs']
+require('@babel/register')({
+  presets: ['@babel/preset-env']
 });
 module.exports = require('./main').default;
