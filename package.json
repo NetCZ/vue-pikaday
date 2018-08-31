@@ -64,7 +64,7 @@
     "cypress-vue-unit-test": "^1.11.0",
     "eslint": "^5.3.0",
     "eslint-plugin-flowtype": "^2.50.0",
-    "flow-bin": "^0.79.0",
+    "flow-bin": "^0.80.0",
     "husky": "^1.0.0-rc.13",
     "moment": "^2.22.2",
     "pikaday": "^1.7.0",
