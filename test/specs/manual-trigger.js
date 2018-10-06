@@ -13,7 +13,7 @@ const component = {
   }
 };
 
-describe.only('Component', () => {
+describe('Component', () => {
   before(() => cy.mount(component));
 
   it('shows / hide via external trigger', () => {
