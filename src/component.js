@@ -6,13 +6,21 @@ import isDate from 'lodash/isDate';
 
 import 'pikaday/css/pikaday.css';
 
+function isEvent(value) {
+  return value instanceof Event || (value && value.constructor && value.constructor.name === 'Event');
+}
+
 export default {
   name: 'vue-pikaday',
   inheritAttrs: false,
   props: {
     value: {
-      validator(value: typeof undefined | null | Date): boolean {
+      validator(value: typeof undefined | null | Date | Event): boolean {
         const allowedTypes: Array<typeof undefined | null> = [undefined, null];
+
+        if (isEvent(value)) {
+          return true;
+        }
 
         if (isDate(value)) {
           return true;
@@ -73,8 +81,13 @@ export default {
     this.create();
 
     this.$watch('value', (value: typeof undefined | null | Date) => {
-      this.pikaday.setDate(value, true);
-      this.$emit('input-value', this.inputValue(value));
+      if (!isDate(value)) {
+        value = null;
+      }
+      if (!this.visible) {
+        this.pikaday.setDate(value, true);
+      }
+      this.change(value);
     });
   },
   beforeDestroy() {
@@ -113,6 +126,9 @@ export default {
       this.$emit('input-value', this.inputValue(value));
     },
     inputValue(value: typeof undefined | null | Date): string | null {
+      if (!isDate(value)) {
+        return null;
+      }
       const inputValue: moment = moment(value);
       return inputValue.isValid() ? inputValue.format(this.mergedOptions.format) : null;
     },
@@ -123,6 +139,10 @@ export default {
       this.visible = true;
     },
     onClose() {
+      if (!isDate(this.value)) {
+        this.pikaday.setDate(null, true);
+        this.change(null);
+      }
       this.visible = false;
     },
     show() {
