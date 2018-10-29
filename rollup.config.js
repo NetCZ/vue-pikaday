@@ -15,7 +15,7 @@ const src = path.resolve(base, 'src');
 const dist = path.resolve(base, 'dist');
 const debug = process.env.DEBUG === 'true';
 
-export default {
+const baseConfig = {
   input: path.resolve(src, 'index.js'),
   external: Object.keys(peerDependencies),
   plugins: [
@@ -39,9 +39,13 @@ export default {
         drop_debugger: !debug
       }
     })
-  ],
-  output: [
-    {
+  ]
+};
+
+export default [
+  {
+    ...baseConfig,
+    output: {
       format: 'cjs',
       name: camelCase(name),
       file: path.resolve(dist, name + '.common.js'),
@@ -51,7 +55,10 @@ export default {
         pikaday: 'Pikaday'
       },
     },
-    {
+  },
+  {
+    ...baseConfig,
+    output: {
       format: 'umd',
       name: camelCase(name),
       file: path.resolve(dist, name + '.js'),
@@ -60,11 +67,14 @@ export default {
         moment: 'moment',
         pikaday: 'Pikaday'
       },
-    },
-    {
+    }
+  },
+  {
+    ...baseConfig,
+    output: {
       format: 'es',
       file: path.resolve(dist, name + '.esm.js'),
       sourcemap: true
     }
-  ]
-};
+  }
+];
