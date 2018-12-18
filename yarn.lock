@@ -7254,7 +7254,6 @@ rollup-pluginutils@^2.3.3:
 rollup@^0.68.0:
   version "0.68.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.68.0.tgz#e4fbde2e6278354962be530b498fc485298c0fc3"
-  integrity sha512-UbmntCf8QBlOqJnwsNWQCI0oonHOgs9y1OLoO8BHf2r8gCyRLp3JzLHXARJpsNDAS08Qm3LDjzyWma5sqnCxDQ==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"
@@ -7978,9 +7977,9 @@ traverse@~0.6.6:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
 
-travis-deploy-once@^5.0.10:
-  version "5.0.10"
-  resolved "https://registry.yarnpkg.com/travis-deploy-once/-/travis-deploy-once-5.0.10.tgz#b2950637ddbe906e545d8c3b7b388265938ee746"
+travis-deploy-once@^5.0.11:
+  version "5.0.11"
+  resolved "https://registry.yarnpkg.com/travis-deploy-once/-/travis-deploy-once-5.0.11.tgz#32665480f82ee43b7936f19371f839cdc9b30202"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/polyfill" "^7.0.0"
