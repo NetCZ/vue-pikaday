@@ -14,6 +14,7 @@ sudo: false
 jobs:
   include:
     - stage: lint
+      node_js: '11'
       script: commitlint-travis
     - &test
       node_js: '11'
@@ -23,8 +24,8 @@ jobs:
       cache:
         yarn: true
         directories:
-          - ~/.cache
-          - node_modules
+        - ~/.cache
+        - node_modules
 
     - <<: *test
       node_js: '10'
@@ -33,6 +34,7 @@ jobs:
     - <<: *test
       node_js: '8'
     - stage: npm release
+      node_js: '11'
       deploy:
         provider: npm
         api_key: $NPM_TOKEN
