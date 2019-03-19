@@ -30,3 +30,9 @@ jobs:
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+
+stages:
+  - lint
+  - test
+  - name: npm release
+    if: branch = master
