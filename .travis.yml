@@ -4,6 +4,7 @@ cache:
   yarn: true
   directories:
     - ~/.cache
+    - node_modules
 
 notifications:
   email: false
@@ -20,8 +21,9 @@ jobs:
       install: yarn
       script: yarn test
       cache:
+        yarn: true
         directories:
-          - ~/.npm
+          - ~/.cache
           - node_modules
 
     - <<: *test
