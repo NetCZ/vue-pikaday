@@ -8,20 +8,28 @@ cache:
 notifications:
   email: false
 
-node_js:
-  - '11'
-  - '10'
-  - '9'
-  - '8'
-
 sudo: false
 
 jobs:
   include:
     - stage: lint
       script: commitlint-travis
-    - stage: test
+    - &test
+      node_js: '11'
+      stage: test
+      install: yarn
       script: yarn test
+      cache:
+        directories:
+          - ~/.npm
+          - node_modules
+
+    - <<: *test
+      node_js: '10'
+    - <<: *test
+      node_js: '9'
+    - <<: *test
+      node_js: '8'
     - stage: npm release
       deploy:
         provider: npm
