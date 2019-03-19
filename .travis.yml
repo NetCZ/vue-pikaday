@@ -1,20 +1,32 @@
 language: node_js
+
 cache:
-  directories:
-    - ~/.npm
+  - ~/.npm
+  - ~/.cache
+
 notifications:
   email: false
+
 node_js:
   - '11'
   - '10'
   - '9'
   - '8'
+
 sudo: false
-script:
-  - commitlint-travis
-  - yarn test
-after_success:
-  - yarn travis-deploy-once "yarn semantic-release"
+
+jobs:
+  include:
+    - stage: lint
+      script: commitlint-travis
+    - stage: test
+      script: yarn test
+    - stage: npm release
+      deploy:
+        provider: npm
+        api_key: $NPM_TOKEN
+        on: semantic-release
+
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
