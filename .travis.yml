@@ -1,8 +1,9 @@
 language: node_js
 
 cache:
-  - ~/.npm
-  - ~/.cache
+  yarn: true
+  directories:
+    - ~/.cache
 
 notifications:
   email: false
