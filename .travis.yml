@@ -24,8 +24,8 @@ jobs:
       cache:
         yarn: true
         directories:
-        - ~/.cache
-        - node_modules
+          - ~/.cache
+          - node_modules
 
     - <<: *test
       node_js: '10'
@@ -35,10 +35,9 @@ jobs:
       node_js: '8'
     - stage: npm release
       node_js: '11'
-      deploy:
-        provider: npm
-        api_key: $NPM_TOKEN
-        on: semantic-release
+      script:
+        - yarn build
+        - yarn semantic-release
 
 branches:
   except:
