@@ -14,27 +14,21 @@ sudo: false
 jobs:
   include:
     - stage: lint
-      node_js: '11'
+      node_js: '12'
       script: commitlint-travis
+
     - &test
-      node_js: '11'
+      node_js: '12'
       stage: test
       install: yarn
       script: yarn test
-      cache:
-        yarn: true
-        directories:
-          - ~/.cache
-          - node_modules
-
+    - <<: *test
+      node_js: '11'
     - <<: *test
       node_js: '10'
-    - <<: *test
-      node_js: '9'
-    - <<: *test
-      node_js: '8'
+
     - stage: npm release
-      node_js: '11'
+      node_js: '12'
       script:
         - yarn build
         - yarn semantic-release
