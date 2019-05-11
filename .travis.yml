@@ -29,9 +29,12 @@ jobs:
 
     - stage: npm release
       node_js: '12'
+      before_install: yarn global add greenkeeper-lockfile@1
+      before_script: greenkeeper-lockfile-update
       script:
         - yarn build
         - yarn semantic-release
+      after_script: greenkeeper-lockfile-upload
 
 branches:
   except:
