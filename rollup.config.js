@@ -5,11 +5,12 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
-import css from 'rollup-plugin-css-porter';
+import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
 
 import { peerDependencies, scope, name as nameWithScope } from './package.json';
 
-const name = nameWithScope.replace(`@${scope}/`, '');
+const name = nameWithScope.replace(`@${ scope }/`, '');
 const base = path.resolve(__dirname, './');
 const src = path.resolve(base, 'src');
 const dist = path.resolve(base, 'dist');
@@ -29,7 +30,15 @@ const baseConfig = {
       exclude: 'node_modules/**'
     }),
     commonjs(),
-    css({ dest: dist + '/vue-pikaday.css' }),
+    postcss({
+      extract: dist + '/vue-pikaday.min.css',
+      minimize: true
+    }),
+    copy({
+      targets: {
+        'node_modules/pikaday/css/pikaday.css': dist + '/vue-pikaday.css'
+      }
+    }),
     terser({
       mangle: {
         reserved: ['Pikaday', 'moment']
