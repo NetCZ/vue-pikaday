@@ -4,7 +4,7 @@ const component = {
   template: '<vue-pikaday v-model="date" :options="options" data-vue-pikaday></vue-pikaday>'
 };
 
-describe('Component', () => {
+describe('Basic', () => {
   before(() => cy.mount(component));
 
   it('renders', () => {
@@ -21,6 +21,6 @@ describe('Component', () => {
 
   it('selects current date via picker', () => {
     cy.get('[data-vue-pikaday]').focus();
-    cy.get(`[data-day="${moment().date()}"] button`).click();
+    cy.get(`[data-day="${ moment().date() }"] button`).click();
   });
 });

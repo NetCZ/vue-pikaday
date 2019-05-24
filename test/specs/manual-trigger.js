@@ -8,12 +8,14 @@ const component = {
       ></vue-pikaday>
       <button @click="visible = !visible" data-test="manual">Manual</button>
     </div>`,
-  data: {
-    visible: false
+  data() {
+    return {
+      visible: false
+    };
   }
 };
 
-describe('Component', () => {
+describe('Manual trigger', () => {
   before(() => cy.mount(component));
 
   it('shows / hide via external trigger', () => {
