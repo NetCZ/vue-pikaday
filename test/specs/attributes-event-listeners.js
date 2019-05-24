@@ -17,7 +17,7 @@ const component = {
   }
 };
 
-describe('Component', () => {
+describe('Attributes & events', () => {
   before(() => cy.mount(component));
 
   it('renders custom attributes', () => {

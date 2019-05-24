@@ -1,5 +1,5 @@
-import _mergeWith from 'lodash/mergeWith';
-import _isObject from 'lodash/isObject';
+import merge from 'lodash/merge';
+import isFunction from 'lodash/isFunction';
 
 import mountVue from 'cypress-vue-unit-test';
 
@@ -7,7 +7,7 @@ import VuePikaday from '../../../dist/vue-pikaday.esm';
 
 import standaloneHTML from './standalone.html';
 
-const mode = `${Cypress.env('mode') || 'esm'}`;
+const mode = `${ Cypress.env('mode') || 'esm' }`;
 
 const options = {
   extensions: {
@@ -19,21 +19,16 @@ const options = {
 Cypress.Commands.add('mount', (component) => {
   const appIframe = window.parent.document.querySelector('.aut-iframe');
   const iframeDocument = appIframe.contentDocument || appIframe.contentWindow.document;
-  const componentData = component.data || {};
+  const componentData = (isFunction(component.data) ? component.data() : component.data) || {};
 
   component.data = function () {
-    return _mergeWith({
+    return merge({
       date: null,
     }, componentData, {
       options: {
         // we have to specify container to put picker to, otherwise it would be rendered in wrong frame
         container: iframeDocument.querySelector('body')
       }
-    }, (res, obj) => {
-      if (_isObject(res) && _isObject(obj)) {
-        return Object.assign({}, res, obj);
-      }
-      return res;
     });
   };
 

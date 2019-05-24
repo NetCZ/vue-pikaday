@@ -27,7 +27,7 @@ const component = {
   }
 };
 
-describe('Component', () => {
+describe('External changes', () => {
   before(() => cy.mount(component));
 
   it('updates Pikaday value from outside', () => {
