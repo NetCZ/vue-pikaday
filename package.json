@@ -54,7 +54,7 @@
     "@babel/preset-flow": "^7.0.0",
     "@babel/register": "^7.4.4",
     "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^7.6.0",
+    "@commitlint/config-conventional": "^8.0.0",
     "@commitlint/travis-cli": "^8.0.0",
     "@cypress/rollup-preprocessor": "https://github.com/dschulten/cypress-rollup-preprocessor",
     "babel-eslint": "^10.0.1",
