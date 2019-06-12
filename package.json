@@ -78,5 +78,9 @@
     "semantic-release": "^15.13.12",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
+  },
+  "resolutions": {
+    "tar": "^4.4.10",
+    "marked": "^0.6.2"
   }
 }
