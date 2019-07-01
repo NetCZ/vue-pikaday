@@ -64,7 +64,7 @@
     "eslint": "^6.0.1",
     "eslint-plugin-flowtype": "^3.9.1",
     "flow-bin": "^0.102.0",
-    "husky": "^2.3.0",
+    "husky": "^3.0.0",
     "moment": "^2.24.0",
     "pikaday": "^1.8.0",
     "rollup": "^1.14.6",
