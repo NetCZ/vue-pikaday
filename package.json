@@ -32,7 +32,9 @@
     "cy:run": "cypress run $RECORD",
     "cy:open": "cypress open",
     "lint": "eslint src",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "vue",
@@ -41,7 +43,8 @@
     "datepicker"
   ],
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "snyk": "^1.189.0"
   },
   "peerDependencies": {
     "moment": "^2.24.0",
@@ -82,5 +85,6 @@
   "resolutions": {
     "tar": "^4.4.10",
     "marked": "^0.6.2"
-  }
+  },
+  "snyk": true
 }
