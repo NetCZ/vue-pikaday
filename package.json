@@ -34,7 +34,7 @@
     "lint": "eslint src",
     "semantic-release": "semantic-release",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish": "yarn snyk-protect"
   },
   "keywords": [
     "vue",
@@ -43,8 +43,7 @@
     "datepicker"
   ],
   "dependencies": {
-    "lodash": "^4.17.11",
-    "snyk": "^1.189.0"
+    "lodash": "^4.17.11"
   },
   "peerDependencies": {
     "moment": "^2.24.0",
@@ -80,7 +79,8 @@
     "rollup-plugin-terser": "^5.0.0",
     "semantic-release": "^15.13.12",
     "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "snyk": "^1.189.0"
   },
   "resolutions": {
     "tar": "^4.4.10",
