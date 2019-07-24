@@ -80,7 +80,7 @@
     "semantic-release": "^15.13.12",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
-    "snyk": "^1.189.0"
+    "snyk": "^2.0.0"
   },
   "resolutions": {
     "tar": "^4.4.10",
