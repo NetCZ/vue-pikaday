@@ -6,6 +6,12 @@ cache:
     - ~/.cache
     - node_modules
 
+addons:
+  apt:
+    packages:
+      # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
+      - libgconf-2-4
+
 notifications:
   email: false
 
