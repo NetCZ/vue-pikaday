@@ -78,7 +78,7 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-terser": "^5.1.1",
     "semantic-release": "^15.13.19",
-    "snyk": "^1.210.0",
+    "snyk": "^1.231.1",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   },
