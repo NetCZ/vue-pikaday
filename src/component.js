@@ -110,7 +110,7 @@ export default {
         this.change(defaultValue);
       }
 
-      this.pikaday.setDate(defaultValue);
+      this.pikaday.setDate(defaultValue, true);
 
       if (this.mergedOptions.bound === false) {
         this.hide();
