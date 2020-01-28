@@ -65,7 +65,7 @@
     "cypress-vue-unit-test": "^1.11.3",
     "eslint": "^6.1.0",
     "eslint-plugin-flowtype": "^4.3.1",
-    "flow-bin": "^0.114.0",
+    "flow-bin": "^0.117.0",
     "husky": "^4.2.1",
     "moment": "^2.24.0",
     "pikaday": "^1.8.0",
@@ -77,7 +77,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-terser": "^5.1.1",
-    "semantic-release": "^16.0.1",
+    "semantic-release": "^17.0.0",
     "snyk": "^1.254.0",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
