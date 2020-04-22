@@ -3,6 +3,7 @@
 import moment from 'moment';
 import Pikaday from 'pikaday';
 import isDate from 'lodash/isDate';
+import isString from 'lodash/isString';
 
 import 'pikaday/css/pikaday.css';
 
@@ -15,7 +16,7 @@ export default {
   inheritAttrs: false,
   props: {
     value: {
-      validator(value: typeof undefined | null | Date | Event): boolean {
+      validator(value: typeof undefined | null | Date | Event | string): boolean {
         const allowedTypes: Array<typeof undefined | null> = [undefined, null];
 
         if (isEvent(value)) {
@@ -23,6 +24,10 @@ export default {
         }
 
         if (isDate(value)) {
+          return true;
+        }
+
+        if(isString(value) && moment(value).isValid()) {
           return true;
         }
 
