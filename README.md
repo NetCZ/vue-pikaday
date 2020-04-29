@@ -2,8 +2,10 @@
 
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/@enrian/vue-pikaday)
 [![npm](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/@enrian/vue-pikaday)
-[![Build Status](https://travis-ci.com/NetCZ/vue-separate-files-webpack-loader.svg?branch=master)](https://travis-ci.com/enrian/vue-pikaday)
-[![Known Vulnerabilities](https://snyk.io/test/github/enrian/vue-pikaday/badge.svg)](https://snyk.io/test/github/enrian/vue-pikaday) [![Greenkeeper badge](https://badges.greenkeeper.io/enrian/vue-pikaday.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/enrian/vue-pikaday.svg?branch=master)](https://travis-ci.com/enrian/vue-pikaday)
+[![Known Vulnerabilities](https://snyk.io/test/github/enrian/vue-pikaday/badge.svg)](https://snyk.io/test/github/enrian/vue-pikaday)
+
+> IMPORTANT: Package is no longer maintained. Please use '@netcz/vue-pikaday' instead.
 
 VueJS wrapper component for Pikaday datepicker
 
