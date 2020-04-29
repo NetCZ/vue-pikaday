@@ -1,6 +1,6 @@
 {
-  "name": "@enrian/vue-pikaday",
-  "scope": "enrian",
+  "name": "@netcz/vue-pikaday",
+  "scope": "netcz",
   "version": "0.0.0-development",
   "description": "VueJS wrapper component for Pikaday datepicker",
   "main": "dist/vue-pikaday.common.js",
@@ -9,13 +9,13 @@
   "style": "dist/vue-pikaday.css",
   "author": "Michal Szajter <michal@szajter.cz>",
   "license": "MIT",
-  "homepage": "https://github.com/enrian/vue-pikaday",
+  "homepage": "https://github.com/NetCZ/vue-pikaday",
   "repository": {
     "type": "git",
-    "url": "https://git@github.com/enrian/vue-pikaday.git"
+    "url": "https://git@github.com/NetCZ/vue-pikaday.git"
   },
   "bugs": {
-    "url": "https://github.com/enrian/vue-pikaday/issues"
+    "url": "https://github.com/NetCZ/vue-pikaday/issues"
   },
   "husky": {
     "hooks": {
