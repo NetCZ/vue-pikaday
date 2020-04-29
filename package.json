@@ -34,7 +34,9 @@
     "lint": "eslint src",
     "semantic-release": "semantic-release",
     "snyk-protect": "snyk protect",
-    "prepublish": "yarn snyk-protect"
+    "prepublish": "yarn snyk-protect",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "keywords": [
     "vue",
@@ -79,8 +81,14 @@
     "rollup-plugin-terser": "^5.3.0",
     "semantic-release": "^17.0.0",
     "snyk": "^1.305.0",
-    "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10"
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
+    "lodash": "^4.17.15",
+    "markdown-it": "^10.0.0",
+    "markdown-it-attrs": "^3.0.2",
+    "markdown-it-include": "^1.1.0",
+    "vue-server-renderer": "^2.6.11",
+    "vuepress": "^1.4.1"
   },
   "resolutions": {
     "tar": "^4.4.10",

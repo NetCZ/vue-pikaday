@@ -6,3 +6,5 @@ node_modules
 cypress/screenshots
 cypress/videos
 dist
+docs/.vuepress/dist
+.DS_Store
