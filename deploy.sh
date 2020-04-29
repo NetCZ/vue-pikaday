@@ -5,10 +5,10 @@ set -e
 
 yarn docs:build
 
-cd .vuepress/dist
+cd docs/.vuepress/dist
 
 git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:netcz/vue-pikaday.git master:gh-pages
+git push -f git@github.com:NetCZ/vue-pikaday.git master:gh-pages
