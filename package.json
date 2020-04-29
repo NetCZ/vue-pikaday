@@ -1,6 +1,10 @@
 {
   "name": "@netcz/vue-pikaday",
   "scope": "netcz",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0-development",
   "description": "VueJS wrapper component for Pikaday datepicker",
   "main": "dist/vue-pikaday.common.js",
