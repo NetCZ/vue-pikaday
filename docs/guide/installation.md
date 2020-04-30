@@ -22,7 +22,7 @@ yarn add @netcz/vue-pikaday
 
 ## Standalone
 
-1. Download latest [release](https://github.com/netcz/vue-pikaday/releases) of VuePikaday or use latest [jsDelivr](https://www.jsdelivr.com/package/npm/@enrian/vue-pikaday) links
+1. Download latest [release](https://github.com/netcz/vue-pikaday/releases) of VuePikaday or use latest [jsDelivr](https://www.jsdelivr.com/package/npm/@netcz/vue-pikaday) links
 2. Add to your HTML head section (after Vue) using script tag
 
 ```html
