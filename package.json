@@ -13,7 +13,7 @@
   "style": "dist/vue-pikaday.css",
   "author": "Michal Szajter <michal@szajter.cz>",
   "license": "MIT",
-  "homepage": "https://github.com/NetCZ/vue-pikaday",
+  "homepage": "https://netcz.github.io/vue-pikaday",
   "repository": {
     "type": "git",
     "url": "https://git@github.com/NetCZ/vue-pikaday.git"
