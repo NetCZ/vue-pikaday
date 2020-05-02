@@ -38,7 +38,7 @@
     "lint": "eslint src",
     "semantic-release": "semantic-release",
     "snyk-protect": "snyk protect",
-    "prepublish": "yarn snyk-protect",
+    "prepublishOnly": "yarn snyk-protect",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
