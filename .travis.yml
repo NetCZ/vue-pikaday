@@ -1,6 +1,10 @@
 language: node_js
 
-cache: yarn
+cache:
+  yarn: true
+  directories:
+    - ~/.cache
+    - node_modules
 
 addons:
   apt:
