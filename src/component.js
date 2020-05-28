@@ -63,13 +63,15 @@ export default {
       },
       defaultOptions: {
         format: 'D MMM YYYY'
-      },
-      mergedOptions: {}
+      }
     };
   },
   computed: {
     elementAttributes(): Object {
       return Object.assign({}, this.$attrs, this.elAttrs);
+    },
+    mergedOptions() {
+      return Object.assign({}, this.defaultOptions, this.options);
     }
   },
   render(h: Function): Object {
@@ -78,9 +80,6 @@ export default {
       on: this.$listeners,
       value: this.inputValue(this.value)
     }, this.$slots.default);
-  },
-  beforeMount() {
-    this.mergedOptions = Object.assign({}, this.defaultOptions, this.options);
   },
   mounted() {
     this.create();
@@ -97,6 +96,14 @@ export default {
   },
   beforeDestroy() {
     this.destroy();
+  },
+  watch: {
+    options: {
+      handler() {
+        this.reload();
+      },
+      deep: true
+    }
   },
   methods: {
     create() {
@@ -125,6 +132,10 @@ export default {
     },
     destroy() {
       this.pikaday.destroy();
+    },
+    reload() {
+      this.destroy();
+      this.create();
     },
     change(value: typeof undefined | null | Date) {
       this.$emit('input', value);
