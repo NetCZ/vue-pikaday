@@ -1,5 +1,6 @@
 //@flow
 
+import { h } from 'vue';
 import moment from 'moment';
 import Pikaday from 'pikaday';
 import isDate from 'lodash/isDate';
@@ -74,10 +75,9 @@ export default {
       return Object.assign({}, this.defaultOptions, this.options);
     }
   },
-  render(h: Function): Object {
+  render(): Object {
     return h('input', {
-      attrs: this.elementAttributes,
-      on: this.$listeners,
+      ...this.elementAttributes,
       value: this.inputValue(this.value)
     }, this.$slots.default);
   },
@@ -94,7 +94,7 @@ export default {
       this.change(value);
     });
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.destroy();
   },
   watch: {
