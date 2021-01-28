@@ -8,32 +8,33 @@ import isString from 'lodash/isString';
 
 import 'pikaday/css/pikaday.css';
 
-function isEvent(value) {
-  return value instanceof Event || (value && value.constructor && value.constructor.name === 'Event');
+function isEvent(modelValue) {
+  return modelValue instanceof Event || (modelValue && modelValue.constructor && modelValue.constructor.name === 'Event');
 }
 
 export default {
   name: 'vue-pikaday',
   inheritAttrs: false,
+  emits: ['update:modelValue', 'update:inputValue', 'update:visible'],
   props: {
-    value: {
-      validator(value: typeof undefined | null | Date | Event | string): boolean {
+    modelValue: {
+      validator(modelValue: typeof undefined | null | Date | Event | string): boolean {
         const allowedTypes: Array<typeof undefined | null> = [undefined, null];
 
-        if (isEvent(value)) {
+        if (isEvent(modelValue)) {
           return true;
         }
 
-        if (isDate(value)) {
+        if (isDate(modelValue)) {
           return true;
         }
 
-        if(isString(value) && moment(value).isValid()) {
+        if(isString(modelValue) && moment(modelValue).isValid()) {
           return true;
         }
 
         for (const type of allowedTypes) {
-          const allowed: boolean = value === type || typeof value === type;
+          const allowed: boolean = modelValue === type || typeof modelValue === type;
 
           if (allowed) {
             return true;
@@ -43,6 +44,10 @@ export default {
         return false;
       },
       required: true
+    },
+    visible: {
+      type: Boolean,
+      default: false
     },
     options: {
       required: false,
@@ -58,7 +63,6 @@ export default {
   },
   data() {
     return {
-      visible: false,
       elAttrs: {
         type: 'text'
       },
@@ -73,25 +77,35 @@ export default {
     },
     mergedOptions() {
       return Object.assign({}, this.defaultOptions, this.options);
+    },
+    inputValue(): string | null {
+      if (!this.isModelValueValid) {
+        return null;
+      }
+      const inputValue: moment = moment(this.modelValue);
+      return inputValue.isValid() ? inputValue.format(this.mergedOptions.format) : null;
+    },
+    isModelValueValid() {
+      return isDate(this.modelValue);
     }
   },
   render(): Object {
     return h('input', {
       ...this.elementAttributes,
-      value: this.inputValue(this.value)
+      modelValue: this.inputValue
     }, this.$slots.default);
   },
   mounted() {
     this.create();
 
-    this.$watch('value', (value: typeof undefined | null | Date) => {
-      if (!isDate(value)) {
-        value = null;
+    this.$watch('modelValue', (modelValue: typeof undefined | null | Date) => {
+      if (!this.isModelValueValid) {
+        modelValue = null;
       }
       if (!this.visible) {
-        this.pikaday.setDate(value, true);
+        this.pikaday.setDate(modelValue, true);
       }
-      this.change(value);
+      this.change(modelValue);
     });
   },
   beforeUnmount() {
@@ -117,7 +131,7 @@ export default {
 
       let defaultValue: typeof undefined | null | Date = this.value;
 
-      if (!this.value && this.autoDefault) {
+      if (!this.modelValue && this.autoDefault) {
         defaultValue = moment().toDate();
         this.change(defaultValue);
       }
@@ -137,29 +151,22 @@ export default {
       this.destroy();
       this.create();
     },
-    change(value: typeof undefined | null | Date) {
-      this.$emit('input', value);
-      this.$emit('input-value', this.inputValue(value));
-    },
-    inputValue(value: typeof undefined | null | Date): string | null {
-      if (!isDate(value)) {
-        return null;
-      }
-      const inputValue: moment = moment(value);
-      return inputValue.isValid() ? inputValue.format(this.mergedOptions.format) : null;
+    change(modelValue: typeof undefined | null | Date) {
+      this.$emit('update:modelValue', modelValue);
+      this.$emit('update:inputValue', this.inputValue);
     },
     onSelect() {
       this.change(this.pikaday.getDate());
     },
     onOpen() {
-      this.visible = true;
+      this.$emit('update:visible', true);
     },
     onClose() {
-      if (!isDate(this.value)) {
+      if (!this.isModelValueValid) {
         this.pikaday.setDate(null, true);
         this.change(null);
       }
-      this.visible = false;
+      this.$emit('update:visible', false);
     },
     show() {
       this.pikaday.show();
