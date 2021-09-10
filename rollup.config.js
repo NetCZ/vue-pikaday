@@ -74,7 +74,8 @@ export default [
       sourcemap: true,
       globals: {
         moment: 'moment',
-        pikaday: 'Pikaday'
+        pikaday: 'Pikaday',
+        vue: 'vue'
       },
     }
   },

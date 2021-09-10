@@ -1,15 +1,9 @@
 import VuePikaday from './component';
-import { VuePikadayVisible } from './directives';
 
 const VuePikadayPlugin = {
-  install(Vue) {
-    Vue.component(VuePikaday.name, VuePikaday);
-    Vue.directive('p-visible', VuePikadayVisible);
+  install(app) {
+    app.component(VuePikaday.name, VuePikaday);
   }
 };
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(VuePikadayPlugin);
-}
 
 export default VuePikadayPlugin;
