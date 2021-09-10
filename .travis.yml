@@ -20,23 +20,23 @@ sudo: false
 jobs:
   include:
     - stage: lint
-      node_js: '13'
+      node_js: '16'
       script: commitlint-travis
 
     - &test
-      node_js: '13'
+      node_js: '16'
       stage: test
       install: yarn
       script: yarn test
     - <<: *test
-      node_js: '12'
+      node_js: '15'
     - <<: *test
-      node_js: '11'
+      node_js: '14'
     - <<: *test
-      node_js: '10'
+      node_js: '13'
 
     - stage: npm release
-      node_js: '13'
+      node_js: '16'
       before_install: yarn global add greenkeeper-lockfile@1
       before_script: greenkeeper-lockfile-update
       script:
